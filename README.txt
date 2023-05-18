@@ -7,5 +7,5 @@ VD: Thay thuộc tính Id tự tạo sẵn của Entity Framework bằng
 
 - Trong dự án đã cài đặt bao gồm 
   + Interaction WPF : chạy lệnh : Install-Package System.Windows.Interactivity.WPF
-  + Cài đặt Material Design: Làm theo hướng dẫn tại trang chủ Material Design hoặc vào Tools -> Nuget PackageManager -> tìm kiếm MaterialDesign
+  + Cài đặt Material Design: Làm theo hướng dẫn tại trang chủ Material Design hoặc vào Tools -> Nuget PackageManager -> Nuget Solution: tìm kiếm MaterialDesign
 	
