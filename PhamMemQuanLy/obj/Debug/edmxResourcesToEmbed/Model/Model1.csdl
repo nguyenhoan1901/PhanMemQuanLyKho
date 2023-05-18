@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PhamMemQuanLyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PhamMemQuanLyEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="PhamMemQuanLyModel.Customer" />
+    <EntitySet Name="Inputs" EntityType="PhamMemQuanLyModel.Input" />
+    <EntitySet Name="InputInfoes" EntityType="PhamMemQuanLyModel.InputInfo" />
+    <EntitySet Name="Objects" EntityType="PhamMemQuanLyModel.Object" />
+    <EntitySet Name="Outputs" EntityType="PhamMemQuanLyModel.Output" />
+    <EntitySet Name="OutputInfoes" EntityType="PhamMemQuanLyModel.OutputInfo" />
+    <EntitySet Name="Supliers" EntityType="PhamMemQuanLyModel.Suplier" />
+    <EntitySet Name="Units" EntityType="PhamMemQuanLyModel.Unit" />
+    <EntitySet Name="UserRoles" EntityType="PhamMemQuanLyModel.UserRole" />
+    <EntitySet Name="Users" EntityType="PhamMemQuanLyModel.User" />
+    <AssociationSet Name="FK__OutputInf__IdCus__4F7CD00D" Association="PhamMemQuanLyModel.FK__OutputInf__IdCus__4F7CD00D">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="OutputInfo" EntitySet="OutputInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__InputInfo__IdInp__4BAC3F29" Association="PhamMemQuanLyModel.FK__InputInfo__IdInp__4BAC3F29">
+      <End Role="Input" EntitySet="Inputs" />
+      <End Role="InputInfo" EntitySet="InputInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__InputInfo__IdObj__4CA06362" Association="PhamMemQuanLyModel.FK__InputInfo__IdObj__4CA06362">
+      <End Role="Object" EntitySet="Objects" />
+      <End Role="InputInfo" EntitySet="InputInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Object__IdSuplie__4E88ABD4" Association="PhamMemQuanLyModel.FK__Object__IdSuplie__4E88ABD4">
+      <End Role="Suplier" EntitySet="Supliers" />
+      <End Role="Object" EntitySet="Objects" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Object__IdUnit__4D94879B" Association="PhamMemQuanLyModel.FK__Object__IdUnit__4D94879B">
+      <End Role="Unit" EntitySet="Units" />
+      <End Role="Object" EntitySet="Objects" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OutputInf__IdObj__5070F446" Association="PhamMemQuanLyModel.FK__OutputInf__IdObj__5070F446">
+      <End Role="Object" EntitySet="Objects" />
+      <End Role="OutputInfo" EntitySet="OutputInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OutputInfo__Id__412EB0B6" Association="PhamMemQuanLyModel.FK__OutputInfo__Id__412EB0B6">
+      <End Role="Output" EntitySet="Outputs" />
+      <End Role="OutputInfo" EntitySet="OutputInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__IdRole__5165187F" Association="PhamMemQuanLyModel.FK__Users__IdRole__5165187F">
+      <End Role="UserRole" EntitySet="UserRoles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MoreInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ContractDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="OutputInfoes" Relationship="PhamMemQuanLyModel.FK__OutputInf__IdCus__4F7CD00D" FromRole="Customer" ToRole="OutputInfo" />
+  </EntityType>
+  <EntityType Name="Input">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="DateInput" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="InputInfoes" Relationship="PhamMemQuanLyModel.FK__InputInfo__IdInp__4BAC3F29" FromRole="Input" ToRole="InputInfo" />
+  </EntityType>
+  <EntityType Name="InputInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IdObject" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IdInput" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Count" Type="Int32" />
+    <Property Name="InputPrice" Type="Double" />
+    <Property Name="OutputPrice" Type="Double" />
+    <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Input" Relationship="PhamMemQuanLyModel.FK__InputInfo__IdInp__4BAC3F29" FromRole="InputInfo" ToRole="Input" />
+    <NavigationProperty Name="Object" Relationship="PhamMemQuanLyModel.FK__InputInfo__IdObj__4CA06362" FromRole="InputInfo" ToRole="Object" />
+  </EntityType>
+  <EntityType Name="Object">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IdUnit" Type="Int32" Nullable="false" />
+    <Property Name="IdSuplier" Type="Int32" Nullable="false" />
+    <Property Name="QRCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BarCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="InputInfoes" Relationship="PhamMemQuanLyModel.FK__InputInfo__IdObj__4CA06362" FromRole="Object" ToRole="InputInfo" />
+    <NavigationProperty Name="Suplier" Relationship="PhamMemQuanLyModel.FK__Object__IdSuplie__4E88ABD4" FromRole="Object" ToRole="Suplier" />
+    <NavigationProperty Name="Unit" Relationship="PhamMemQuanLyModel.FK__Object__IdUnit__4D94879B" FromRole="Object" ToRole="Unit" />
+    <NavigationProperty Name="OutputInfoes" Relationship="PhamMemQuanLyModel.FK__OutputInf__IdObj__5070F446" FromRole="Object" ToRole="OutputInfo" />
+  </EntityType>
+  <EntityType Name="Output">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="DateOutput" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="OutputInfo" Relationship="PhamMemQuanLyModel.FK__OutputInfo__Id__412EB0B6" FromRole="Output" ToRole="OutputInfo" />
+  </EntityType>
+  <EntityType Name="OutputInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IdObject" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IdOutputInfo" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IdCustomer" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Customer" Relationship="PhamMemQuanLyModel.FK__OutputInf__IdCus__4F7CD00D" FromRole="OutputInfo" ToRole="Customer" />
+    <NavigationProperty Name="Object" Relationship="PhamMemQuanLyModel.FK__OutputInf__IdObj__5070F446" FromRole="OutputInfo" ToRole="Object" />
+    <NavigationProperty Name="Output" Relationship="PhamMemQuanLyModel.FK__OutputInfo__Id__412EB0B6" FromRole="OutputInfo" ToRole="Output" />
+  </EntityType>
+  <EntityType Name="Suplier">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MoreInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ContractDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Objects" Relationship="PhamMemQuanLyModel.FK__Object__IdSuplie__4E88ABD4" FromRole="Suplier" ToRole="Object" />
+  </EntityType>
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Objects" Relationship="PhamMemQuanLyModel.FK__Object__IdUnit__4D94879B" FromRole="Unit" ToRole="Object" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Users" Relationship="PhamMemQuanLyModel.FK__Users__IdRole__5165187F" FromRole="UserRole" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IdRole" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="UserRole" Relationship="PhamMemQuanLyModel.FK__Users__IdRole__5165187F" FromRole="User" ToRole="UserRole" />
+  </EntityType>
+  <Association Name="FK__OutputInf__IdCus__4F7CD00D">
+    <End Type="PhamMemQuanLyModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="PhamMemQuanLyModel.OutputInfo" Role="OutputInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OutputInfo">
+        <PropertyRef Name="IdCustomer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__InputInfo__IdInp__4BAC3F29">
+    <End Type="PhamMemQuanLyModel.Input" Role="Input" Multiplicity="1" />
+    <End Type="PhamMemQuanLyModel.InputInfo" Role="InputInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Input">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InputInfo">
+        <PropertyRef Name="IdInput" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__InputInfo__IdObj__4CA06362">
+    <End Type="PhamMemQuanLyModel.Object" Role="Object" Multiplicity="1" />
+    <End Type="PhamMemQuanLyModel.InputInfo" Role="InputInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Object">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InputInfo">
+        <PropertyRef Name="IdObject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Object__IdSuplie__4E88ABD4">
+    <End Type="PhamMemQuanLyModel.Suplier" Role="Suplier" Multiplicity="1" />
+    <End Type="PhamMemQuanLyModel.Object" Role="Object" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suplier">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Object">
+        <PropertyRef Name="IdSuplier" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Object__IdUnit__4D94879B">
+    <End Type="PhamMemQuanLyModel.Unit" Role="Unit" Multiplicity="1" />
+    <End Type="PhamMemQuanLyModel.Object" Role="Object" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Object">
+        <PropertyRef Name="IdUnit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OutputInf__IdObj__5070F446">
+    <End Type="PhamMemQuanLyModel.Object" Role="Object" Multiplicity="1" />
+    <End Type="PhamMemQuanLyModel.OutputInfo" Role="OutputInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Object">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OutputInfo">
+        <PropertyRef Name="IdObject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OutputInfo__Id__412EB0B6">
+    <End Type="PhamMemQuanLyModel.Output" Role="Output" Multiplicity="1" />
+    <End Type="PhamMemQuanLyModel.OutputInfo" Role="OutputInfo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Output">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OutputInfo">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__IdRole__5165187F">
+    <End Type="PhamMemQuanLyModel.UserRole" Role="UserRole" Multiplicity="1" />
+    <End Type="PhamMemQuanLyModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="IdRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

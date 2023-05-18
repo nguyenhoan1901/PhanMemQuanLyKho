@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d80305cacb19403ab4a47c3a740aa791" Name="Diagram1" ZoomLevel="73">
+        <EntityTypeShape EntityType="PhamMemQuanLyModel.Customer" Width="1.5" PointX="6" PointY="8.5" />
+        <EntityTypeShape EntityType="PhamMemQuanLyModel.Input" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="PhamMemQuanLyModel.InputInfo" Width="1.5" PointX="5.25" PointY="4.125" />
+        <EntityTypeShape EntityType="PhamMemQuanLyModel.Object" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="PhamMemQuanLyModel.Output" Width="1.5" PointX="6" PointY="1.125" />
+        <EntityTypeShape EntityType="PhamMemQuanLyModel.OutputInfo" Width="1.5" PointX="8.25" PointY="4.125" />
+        <EntityTypeShape EntityType="PhamMemQuanLyModel.Suplier" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="PhamMemQuanLyModel.Unit" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="PhamMemQuanLyModel.UserRole" Width="1.5" PointX="8.75" PointY="8.5" />
+        <EntityTypeShape EntityType="PhamMemQuanLyModel.User" Width="1.5" PointX="11" PointY="8.25" />
+        <AssociationConnector Association="PhamMemQuanLyModel.FK__OutputInf__IdCus__4F7CD00D" />
+        <AssociationConnector Association="PhamMemQuanLyModel.FK__InputInfo__IdInp__4BAC3F29" />
+        <AssociationConnector Association="PhamMemQuanLyModel.FK__InputInfo__IdObj__4CA06362" />
+        <AssociationConnector Association="PhamMemQuanLyModel.FK__Object__IdSuplie__4E88ABD4" />
+        <AssociationConnector Association="PhamMemQuanLyModel.FK__Object__IdUnit__4D94879B" />
+        <AssociationConnector Association="PhamMemQuanLyModel.FK__OutputInf__IdObj__5070F446" />
+        <AssociationConnector Association="PhamMemQuanLyModel.FK__OutputInfo__Id__412EB0B6" />
+        <AssociationConnector Association="PhamMemQuanLyModel.FK__Users__IdRole__5165187F" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
